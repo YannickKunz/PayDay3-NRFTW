@@ -58,17 +58,13 @@ function printPasswords(passwords) {
   
     const inputDigits = digitInput.value.trim().split(" ").map(Number);
   
-    if (inputDigits.length < 3 || inputDigits.length > 4) {
-      output.innerHTML = "Please enter 3 or 4 digits.";
+  // Validate input values
+    const isValidInputRange = inputDigits.every(digit => digit >= 0 && digit <= 9);
+    const areAllDifferent = inputDigits.length === new Set(inputDigits).size;
+
+    if (!isValidInputRange || !areAllDifferent || inputDigits.length < 3 || inputDigits.length > 4) {
+      output.innerHTML = "Please enter valid and distinct digits (0-9) and use 3 or 4 digits.";
       return;
-    }
-
-    // Validate input values
-    const isValidInput = inputDigits.every(digit => digit >= 0 && digit <= 9);
-
-    if (!isValidInput || inputDigits.length < 3 || inputDigits.length > 4) {
-        output.innerHTML = "Please enter valid digits (0-9) and use 3 or 4 digits.";
-        return;
     }
   
     try {
