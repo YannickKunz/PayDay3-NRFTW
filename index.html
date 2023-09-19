@@ -10,7 +10,18 @@
     <div class="container">
         <h1>PayDay 3 Password Generator</h1>
         <h2>No Rest For The Wicked's Vault</h2>
-        <label for="digitInput">Enter the digits you want to use for the password (space-separated):</label>
+        <div class="color-options">
+            <label for="colorCheckbox">Color:</label>
+            <input type="checkbox" id="whiteCheckbox" value="White">
+            <label for="whiteCheckbox">White</label>
+            <input type="checkbox" id="redCheckbox" value="Red">
+            <label for="redCheckbox">Red</label>
+            <input type="checkbox" id="blueCheckbox" value="Blue">
+            <label for="blueCheckbox">Blue</label>
+            <input type="checkbox" id="greenCheckbox" value="Green">
+            <label for="greenCheckbox">Green</label>
+        </div>
+        <label for="digitInput">Enter the (distinct) digits you want to use for the password (space-separated):</label>
         <input type="text" id="digitInput">
         <br>
         <button onclick="generatePasswords()">Generate Passwords</button>

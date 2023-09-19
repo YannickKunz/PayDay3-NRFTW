@@ -60,5 +60,18 @@ button:hover {
     width: 100%; /* Full width for the label */
 }
 
+/* Updated CSS for the password output */
+.three-column-output {
+    display: flex;
+    flex-wrap: wrap;
+}
 
+.three-column-output > label {
+    flex-basis: calc(33.33% - 20px); /* 3 columns for 12 values */
+    margin-right: 20px;
+}
+
+.password-checkbox {
+    margin-right: 5px;
+}
 

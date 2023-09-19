@@ -58,13 +58,17 @@ function printPasswords(passwords) {
   
     const inputDigits = digitInput.value.trim().split(" ").map(Number);
   
-  // Validate input values
-    const isValidInputRange = inputDigits.every(digit => digit >= 0 && digit <= 9);
-    const areAllDifferent = inputDigits.length === new Set(inputDigits).size;
-
-    if (!isValidInputRange || !areAllDifferent || inputDigits.length < 3 || inputDigits.length > 4) {
-      output.innerHTML = "Please enter valid and distinct digits (0-9) and use 3 or 4 digits.";
+    if (inputDigits.length < 3 || inputDigits.length > 4) {
+      output.innerHTML = "Please enter 3 or 4 digits.";
       return;
+    }
+
+    // Validate input values
+    const isValidInput = inputDigits.every(digit => digit >= 0 && digit <= 9);
+
+    if (!isValidInput || inputDigits.length < 3 || inputDigits.length > 4) {
+        output.innerHTML = "Please enter valid digits (0-9) and use 3 or 4 digits.";
+        return;
     }
   
     try {
@@ -72,6 +76,7 @@ function printPasswords(passwords) {
       
       if (inputDigits.length === 4) {
         possiblePasswords = new Set(generatePossiblePasswords(inputDigits));
+        possiblePasswords = [...possiblePasswords].reverse();
         output.classList.add("four-digit-output"); // Add class for 3 columns
         output.innerHTML = "<h3 class='output-label'>Generated Passwords (4 digits):</h3>";
       } else if (inputDigits.length === 3) {
@@ -88,6 +93,7 @@ function printPasswords(passwords) {
         const passwords3 = generatePossiblePasswords(arr3);
   
         possiblePasswords = new Set([...passwords1, ...passwords2, ...passwords3]);
+        possiblePasswords = [...possiblePasswords].reverse();
         output.classList.add("three-digit-output"); // Add class for 3 columns
         output.innerHTML = "<h3 class='output-label'>Generated Passwords (3 digits):</h3>";
       }
@@ -95,7 +101,7 @@ function printPasswords(passwords) {
       let passwordNumber = 1;
       
       for (const password of possiblePasswords) {
-        output.innerHTML += `<p>${passwordNumber++} : ${password.join(" ")}</p>`;
+        output.innerHTML += `<p>${passwordNumber++} : ${password.join(" ")}<input type="checkbox" value=""></p>`;
       }
     } catch (error) {
       output.innerHTML = error.message;
