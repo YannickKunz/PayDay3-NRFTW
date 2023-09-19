@@ -18,6 +18,7 @@ body {
     text-align: center;
 }
 
+
 label {
     font-weight: bold;
 }
@@ -60,18 +61,31 @@ button:hover {
     width: 100%; /* Full width for the label */
 }
 
-/* Updated CSS for the password output */
-.three-column-output {
+
+header {
+    background-color: lightgray;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
+    color: black;
+    border: black solid 1px;
 }
 
-.three-column-output > label {
-    flex-basis: calc(33.33% - 20px); /* 3 columns for 12 values */
-    margin-right: 20px;
+header * {
+    display: inline;
+    align-items: center;
 }
 
-.password-checkbox {
-    margin-right: 5px;
+a {
+    color: black;
+    text-decoration: none;
+    margin-left: 20px;
 }
 
+a:hover {
+    text-decoration: underline;
+}
